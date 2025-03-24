@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+//Struct utilizado como estrutura de dados para armazenar os dados de cada carta para evitar repetição de variáveis
 struct Carta {
     int idCarta;
     char estadoCarta[2];
@@ -12,24 +13,25 @@ struct Carta {
 };
 
 
-void ler_dados_carta(int idCarta, struct Carta *carta);
-void exibir_carta(struct Carta carta);
+void ler_dados_carta(int idCarta, struct Carta *carta);// Definido função para ler dados da carta
+void exibir_carta(struct Carta carta);//Definido função para exibir dados da carta
 
 int main() {
     
-    struct Carta carta1;
-    struct Carta carta2;
-    ler_dados_carta(1, &carta1);
-    ler_dados_carta(2, &carta2);
+    struct Carta carta1;//Variável para armazenar dados da carta 1
+    struct Carta carta2;//Variável para armazenar dados da carta 2
+    ler_dados_carta(1, &carta1);//Chamando função para ler dados da carta 1, passando id e carta como referência para permitir alteração dos valores na memória
+    ler_dados_carta(2, &carta2);//Chamando função para ler dados da carta 2, passando id e carta como referência para permitir alteração dos valores na memória
 
-    exibir_carta(carta1);
-    exibir_carta(carta2);
+    exibir_carta(carta1);//Exibindo dados da carta 1
+    exibir_carta(carta2);//Exibindo dados da carta 2
     return 0;
 }
 
+//Implementação da função ler dados carta
 void ler_dados_carta(int idCarta, struct Carta *carta) {
-
-    carta->idCarta = idCarta;
+    
+    carta->idCarta = idCarta; //Atribuido id da carta passado por parâmetro como id da carta
     
     printf("Digite o estado [A-H]: ");
     scanf("%s", carta->estadoCarta);
@@ -49,6 +51,7 @@ void ler_dados_carta(int idCarta, struct Carta *carta) {
     printf("\n");
 };
 
+//Implementado função que exibe os dados da carta previamente armazenados
 void exibir_carta(struct Carta carta) {
 
     printf("Carta %d\n", carta.idCarta);
